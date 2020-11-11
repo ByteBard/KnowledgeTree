@@ -1,11 +1,10 @@
 package com.example.knowledgetree
 
+import android.app.Activity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
 import java.util.*
 
@@ -48,15 +47,17 @@ class EditTask : AppCompatActivity() {
                             .addOnSuccessListener {
                                 val detail1 =
                                     "progress Updated Successfully!"
-                                Toast.makeText(applicationContext, detail1, Toast.LENGTH_SHORT).show()
+                                Toast.makeText(applicationContext, detail1, Toast.LENGTH_SHORT)
+                                    .show()
                             }
 
-                        if(updatedProgress == 100){
+                        if (updatedProgress == 100) {
                             issueRef.child(it.issueId).child("complete").setValue(true)
                                 .addOnSuccessListener {
                                     val detail1 =
                                         "Issue Resolved"
-                                    Toast.makeText(applicationContext, detail1, Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(applicationContext, detail1, Toast.LENGTH_SHORT)
+                                        .show()
                                 }
                         }
                     }
@@ -103,5 +104,15 @@ class EditTask : AppCompatActivity() {
                     }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        task?.let {
+            val intent = intent.apply {
+                putExtra("issueId", it.issueId)
+            }
+            setResult(Activity.RESULT_OK, intent)
+        }
+        super.onBackPressed()
     }
 }

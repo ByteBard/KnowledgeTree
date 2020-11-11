@@ -10,23 +10,32 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 
 class TaskListActivity : AppCompatActivity() {
-    private var valueEventListener: ValueEventListener? = null
+    private var valueEventListenerForTaskList: ValueEventListener? = null
+    private var taskList: MutableList<Task> = mutableListOf()
+    private lateinit var taskListView: RecyclerView
+    private var taskRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("tasks")
+    private var issueId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.task_list)
-        val issueId = intent.extras?.getString("issueId")
-        val taskListView = findViewById<RecyclerView>(R.id.task_list)
-        val list = mutableListOf<Task>()
-        taskListView.adapter = TaskListAdaptor(list) { showDetail(it) }
+        issueId = intent.extras?.getString("issueId")
+        taskListView = findViewById(R.id.task_list)
+        taskListView.adapter = TaskListAdaptor(taskList) { showDetail(it) }
         taskListView.layoutManager = LinearLayoutManager(this)
-        valueEventListener = object : ValueEventListener {
+        valueEventListenerForTaskList = getValueEventListenerForTaskList()
+        getTaskListView()
+    }
+
+    private fun getValueEventListenerForTaskList(): ValueEventListener {
+        return object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                list.clear()
+                taskList.clear()
                 for (postSnapshot in dataSnapshot.children) {
                     val task: Task? =
                         postSnapshot.getValue(Task::class.java)
                     if (task != null) {
-                        list.add(task)
+                        taskList.add(task)
                         (taskListView.adapter as TaskListAdaptor).notifyDataSetChanged()
                     }
                 }
@@ -34,14 +43,16 @@ class TaskListActivity : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {
             }
         }
-        var ref = FirebaseDatabase.getInstance().getReference("tasks")
+    }
+
+    private fun getTaskListView(){
         issueId?.let {issueId ->
-            val queryRef: Query = ref.orderByChild("issueId").equalTo(issueId)
-            queryRef.addValueEventListener(valueEventListener as ValueEventListener)
+            val queryRef: Query = taskRef.orderByChild("issueId").equalTo(issueId)
+            queryRef.addValueEventListener(valueEventListenerForTaskList as ValueEventListener)
         }
     }
 
-    fun showDetail(task: Task) {
+    private fun showDetail(task: Task) {
         val intent = Intent(this, EditTask::class.java)
         intent.putExtra("task", task)
         startActivityForResult(intent, 1)
@@ -49,11 +60,7 @@ class TaskListActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val taskListView = findViewById<RecyclerView>(R.id.task_list)
-        val taskList1 = mutableListOf<Task>()
-
-        taskListView.adapter = TaskListAdaptor(taskList1) { showDetail(it) }
-        taskListView.layoutManager = LinearLayoutManager(this)
         if (resultCode != Activity.RESULT_OK) return
+        getTaskListView()
     }
 }
