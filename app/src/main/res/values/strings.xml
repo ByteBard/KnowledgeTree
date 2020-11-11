@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">KnowledgeTree</string>
+    <string name="completed">Completed</string>
+    <string name="typeEditHint">Set the type...</string>
+    <string name="titleEditHint">Enter the title...</string>
+    <string name="detailEditHint">Enter the detail...</string>
+    <string name="title">Title</string>
+    <string name="detail">Detail</string>
+    <string name="type">Type</string>
+    <string name="issueType">Unknown</string>
+    <string name="unknown">Unknown</string>
+    <string name="todo">TODO</string>
+    <string name="create">Create</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="userNameInputHint">Please enter username...</string>
+    <string name="passwordInputHint">Please enter password...</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="fuzzyMatchQueryLabel">Fuzzy Match Query</string>
+    <string name="fuzzyMatchQueryInputHint">Enter any text you want...</string>
+    <string name="fuzzyMatchQueryButtonText">Find</string>
+
+
+    <string name="filter_label">Order By:</string>
+    <string name="filter_title">Title</string>
+    <string name="filter_type">Type</string>
+    <string name="filter_detail">Detail</string>
+
+
+    <string name="issue_edit_save_btn">Save</string>
+    <string name="issue_edit_add_task_btn">Add Task</string>
+
+    <string name="task_edit_title">Task Detail</string>
+    <string name="task_edit_save_button_text">Save</string>
+    <string name="task_edit_complete_checkbox_text">Completed</string>
+</resources>

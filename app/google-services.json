@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "928139809730",
+    "firebase_url": "https://knowledgetree-3439f.firebaseio.com",
+    "project_id": "knowledgetree-3439f",
+    "storage_bucket": "knowledgetree-3439f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928139809730:android:bb43e81463ce35a5b97c5b",
+        "android_client_info": {
+          "package_name": "com.example.knowledgetree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928139809730-9ra9b4pdpilg85gltuplfmp79o1t8bt9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.knowledgetree",
+            "certificate_hash": "2cb59152567aa74a857c684c8c8a35b9b4eab01d"
+          }
+        },
+        {
+          "client_id": "928139809730-1f5d72e4jgkjqv6aemngkccsn6tgeoeh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN0fFvUobn1z5x-Jyh4DalHjpPwK7PJe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928139809730-1f5d72e4jgkjqv6aemngkccsn6tgeoeh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

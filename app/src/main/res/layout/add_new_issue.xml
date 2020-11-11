@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.widget.LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/editTitleLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/issueTitleEditIuput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/titleEditHint"
+        android:inputType="textNoSuggestions"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/editDetailLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/detail"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/issueDetailEditInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/detailEditHint"
+        android:inputType="textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/editTypeLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/type"
+        android:textSize="18sp" />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/issueTypeEditInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/typeEditHint" />
+
+    <CheckBox
+        android:id="@+id/completeCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/completed"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/btn_create_issue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create"
+        android:textSize="24sp" />
+
+
+</android.widget.LinearLayout>
