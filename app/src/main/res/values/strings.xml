@@ -42,4 +42,9 @@
     <string name="issue_list_progress_blob">100%</string>
     <string name="issue_list_progress_task_count">999 Tasks</string>
 
+    <string name="navigation_button_home">Home</string>
+    <string name="navigation_button_issue">Issue</string>
+    <string name="navigation_button_task">Task</string>
+
+
 </resources>
