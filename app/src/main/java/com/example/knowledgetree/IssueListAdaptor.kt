@@ -38,9 +38,9 @@ class IssueListAdaptor(
             issueListType.text = issue.type
             issueListProgress.progress = issue.progress
             if(issue.completed){
-                issueListStatus.setImageResource(R.drawable.tick_complete)
+                issueListStatus.setImageResource(R.drawable.ic_baseline_check_circle_24)
             }else{
-                issueListStatus.setImageResource(R.drawable.tick_not_complete)
+                issueListStatus.setImageResource(R.drawable.ic_baseline_check_circle_outline_24)
             }
             v.setOnClickListener { listener(issue) }
         }

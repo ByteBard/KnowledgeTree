@@ -21,9 +21,12 @@
                 android:id="@+id/issueListTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
+                android:ellipsize="end"
+                android:maxEms="15"
+                android:maxLines="1"
                 android:text="@string/title"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toTopOf="@+id/completeCheck"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -34,18 +37,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/type"
                 android:textSize="18sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxEms="5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/issueListTitle" />
 
             <ImageView
                 android:id="@+id/completeCheck"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="320dp"
-                android:layout_marginEnd="32dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="305dp"
+                android:layout_marginTop="16dp"
                 android:contentDescription="@string/todo"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/tick_not_complete" />
@@ -66,6 +71,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/issueListType"
                 app:layout_constraintVertical_bias="0.466" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/issue_list_visited_time"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/completeCheck" />
+
+            <TextView
+                android:id="@+id/issue_list_progress_blob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/issue_list_progress_blob"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/completeCheck"
+                app:layout_constraintTop_toBottomOf="@+id/issueListTitle" />
+
+            <TextView
+                android:id="@+id/issue_list_task_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/issue_list_progress_task_count"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

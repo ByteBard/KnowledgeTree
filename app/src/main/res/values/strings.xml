@@ -34,4 +34,12 @@
     <string name="task_edit_title">Task Detail</string>
     <string name="task_edit_save_button_text">Save</string>
     <string name="task_edit_complete_checkbox_text">Completed</string>
+    <string name="task_list_drag_Indicator_content_description">Please Drag this item to delete it</string>
+
+    <string name="issue_list_view_more_items">More Items</string>
+    <string name="issue_list_created_time">Created: 3 Jun 2008 11:05:30</string>
+    <string name="issue_list_visited_time">Visited: 3 Jun 2008 11:05:30</string>
+    <string name="issue_list_progress_blob">100%</string>
+    <string name="issue_list_progress_task_count">999 Tasks</string>
+
 </resources>
