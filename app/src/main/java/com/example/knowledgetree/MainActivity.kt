@@ -17,9 +17,6 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.selectedItemId = R.id.navigation_home
-
-
-
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_issues -> {
@@ -27,8 +24,9 @@ class MainActivity : AppCompatActivity() {
                     intent.putExtra("filter", "filter")
                     startActivityForResult(intent, 1)
                 }
-//                R.id.action_schedules -> {
-//                }
+                R.id.navigation_home -> {
+                    true
+                }
 //                R.id.action_music -> {
 //                }
             }

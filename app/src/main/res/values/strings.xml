@@ -47,4 +47,24 @@
     <string name="navigation_button_task">Task</string>
 
 
+    <string name="overall_home_issue_title">Issue Progress</string>
+    <string name="overall_home_issue_label_total">Total</string>
+    <string name="overall_home_issue_label_total_number">100</string>
+    <string name="overall_home_issue_label_resolved">Resolved</string>
+    <string name="overall_home_issue_label_resolved_number">50</string>
+    <string name="overall_home_issue_label_unresolved">Pending</string>
+    <string name="overall_home_issue_label_unresolved_number">50</string>
+    <string name="overall_home_issue_label_progress">50%</string>
+
+    <string name="overall_home_task_title">Task Progress</string>
+    <string name="overall_home_task_label_total">Total</string>
+    <string name="overall_home_task_label_total_number">500</string>
+    <string name="overall_home_task_label_complete">Complete</string>
+    <string name="overall_home_task_label_complete_number">250</string>
+    <string name="overall_home_task_label_incomplete">Pending</string>
+    <string name="overall_home_task_label_incomplete_number">250</string>
+    <string name="overall_home_task_label_progress">50%</string>
+
+
+
 </resources>

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
 
 class IssueListActivity : AppCompatActivity() {
@@ -15,12 +16,11 @@ class IssueListActivity : AppCompatActivity() {
         setContentView(R.layout.issue_list)
 
         val issueListView = findViewById<RecyclerView>(R.id.issue_list)
-
         var ref = FirebaseDatabase.getInstance().getReference("issues")
         val list = mutableListOf<Issue>()
         issueListView.adapter = IssueListAdaptor(list) { showDetail(it) }
         issueListView.layoutManager = LinearLayoutManager(this)
-        val queryRef: Query = ref.orderByChild("userId").equalTo("-MLmFUwyHG3elhxUkXVG")
+        val queryRef: Query = ref.orderByChild("title")
 
         queryRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -40,6 +40,24 @@ class IssueListActivity : AppCompatActivity() {
             }
         })
 
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_issues
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_issues -> {
+                    true
+                }
+                R.id.navigation_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("MainActivity", "MainActivity")
+                    startActivityForResult(intent, 1)
+                }
+//                R.id.action_music -> {
+//                }
+            }
+            true
+        }
+
     }
 
     fun showDetail(issue: Issue) {
@@ -53,7 +71,7 @@ class IssueListActivity : AppCompatActivity() {
         val issueListView = findViewById<RecyclerView>(R.id.issue_list)
         var ref = FirebaseDatabase.getInstance().getReference("issues")
         val list = mutableListOf<Issue>()
-        val queryRef: Query = ref.orderByChild("userId").equalTo("-MLmFUwyHG3elhxUkXVG")
+        val queryRef: Query = ref.orderByChild("title")
 
         queryRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
