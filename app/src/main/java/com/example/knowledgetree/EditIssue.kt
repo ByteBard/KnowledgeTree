@@ -3,11 +3,8 @@ package com.example.knowledgetree
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.*
 import java.util.*
 
@@ -32,9 +29,9 @@ class EditIssue : AppCompatActivity() {
         issueId = intent.getStringExtra("issueId")
         issueUpdateListener = getIssueUpdateListener()
         val progressBar = findViewById<ProgressBar>(R.id.issue_edit_progress_bar)
-        val title = findViewById<EditText>(R.id.issue_create_title_input_text)
-        val type = findViewById<EditText>(R.id.issue_create_type_input_text)
-        val detail = findViewById<EditText>(R.id.issue_create_detail_input_text)
+        val title = findViewById<EditText>(R.id.issue_edit_title_input_text)
+        val type = findViewById<EditText>(R.id.issue_edit_type_input_text)
+        val detail = findViewById<EditText>(R.id.issue_edit_detail_input_text)
         val complete = findViewById<CheckBox>(R.id.issue_create_complete_checkbox)
 
         if (issueId.isNullOrEmpty()) {
@@ -74,9 +71,9 @@ class EditIssue : AppCompatActivity() {
         updateIssueButton.setOnClickListener {
             validateInput()
             if(isValid){
-                val title = findViewById<EditText>(R.id.issue_create_title_input_text).text.toString()
-                val type = findViewById<EditText>(R.id.issue_create_type_input_text).text.toString()
-                val detail = findViewById<EditText>(R.id.issue_create_detail_input_text).text.toString()
+                val title = findViewById<EditText>(R.id.issue_edit_title_input_text).text.toString()
+                val type = findViewById<EditText>(R.id.issue_edit_type_input_text).text.toString()
+                val detail = findViewById<EditText>(R.id.issue_edit_detail_input_text).text.toString()
                 val complete = findViewById<CheckBox>(R.id.issue_create_complete_checkbox).isChecked
                 val currentTime: Date = Calendar.getInstance().time
                 issue?.let {
@@ -118,21 +115,28 @@ class EditIssue : AppCompatActivity() {
     }
 
     private fun validateInput(){
-        val titleEditView = findViewById<EditText>(R.id.issue_create_title_input_text)
-        val typeEditView = findViewById<EditText>(R.id.issue_create_type_input_text)
-        val detailView = findViewById<EditText>(R.id.issue_create_detail_input_text)
-
-        if(titleEditView.text.isNullOrEmpty()){
-            titleEditView.error = "Title can not be empty!"
-            isValid = false
-        }else if(typeEditView.text.isNullOrEmpty()){
-            typeEditView.error = "Type can not be empty!"
-            isValid = false
-        }else if(detailView.text.isNullOrEmpty()){
-            detailView.error = "Detail can not be empty!"
-            isValid = false
-        }else{
-            isValid = true
+        val titleEditView = findViewById<EditText>(R.id.issue_edit_title_input_text)
+        val typeEditView = findViewById<EditText>(R.id.issue_edit_type_input_text)
+        val detailView = findViewById<EditText>(R.id.issue_edit_detail_input_text)
+        when {
+            titleEditView.text.isNullOrEmpty() -> {
+                titleEditView.error = "Title can not be empty!"
+                titleEditView.requestFocus()
+                isValid = false
+            }
+            typeEditView.text.isNullOrEmpty() -> {
+                typeEditView.error = "Type can not be empty!"
+                typeEditView.requestFocus()
+                isValid = false
+            }
+            detailView.text.isNullOrEmpty() -> {
+                detailView.error = "Detail can not be empty!"
+                detailView.requestFocus()
+                isValid = false
+            }
+            else -> {
+                isValid = true
+            }
         }
     }
 
@@ -144,9 +148,9 @@ class EditIssue : AppCompatActivity() {
                         postSnapshot.getValue(Issue::class.java)
                     if (issue != null && issue.issueId == issueId) {
                         val progressBar = findViewById<ProgressBar>(R.id.issue_edit_progress_bar)
-                        val title = findViewById<EditText>(R.id.issue_create_title_input_text)
-                        val type = findViewById<EditText>(R.id.issue_create_type_input_text)
-                        val detail = findViewById<EditText>(R.id.issue_create_detail_input_text)
+                        val title = findViewById<EditText>(R.id.issue_edit_title_input_text)
+                        val type = findViewById<EditText>(R.id.issue_edit_type_input_text)
+                        val detail = findViewById<EditText>(R.id.issue_edit_detail_input_text)
                         val complete = findViewById<CheckBox>(R.id.issue_create_complete_checkbox)
                         issueId = issue.issueId
                         title.setText(issue.title)

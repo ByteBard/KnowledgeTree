@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/issue_create_title_input_text"
+        android:id="@+id/issue_edit_title_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -42,10 +42,10 @@
         android:text="@string/detail"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issue_create_title_input_text" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_title_input_text" />
 
     <EditText
-        android:id="@+id/issue_create_detail_input_text"
+        android:id="@+id/issue_edit_detail_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -72,10 +72,10 @@
         android:text="@string/type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issue_create_detail_input_text" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_detail_input_text" />
 
     <EditText
-        android:id="@+id/issue_create_type_input_text"
+        android:id="@+id/issue_edit_type_input_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -98,7 +98,7 @@
         android:text="@string/completed"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issue_create_type_input_text" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_type_input_text" />
 
     <ProgressBar
         android:id="@+id/issue_edit_progress_bar"
