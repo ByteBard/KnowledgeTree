@@ -70,6 +70,8 @@
 
     <string name="issue_edit_cancel_button_text">Cancel</string>
     <string name="issue_edit_update_button_text">Update</string>
+    <string name="issue_edit_remove_button_desc_text">Delete</string>
+    <string name="task_edit_remove_button_desc_text">Delete</string>
 
 
 

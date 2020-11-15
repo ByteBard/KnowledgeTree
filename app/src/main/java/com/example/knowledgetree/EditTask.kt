@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
 import java.util.*
@@ -18,6 +15,7 @@ class EditTask : AppCompatActivity() {
     private var failUpdateToastMsg = "Task Updated Failure!"
     private var failCreateToastMsg = "Task Create Failure!"
     private var errorMsg = "Something is Wrong!"
+    private var removedMsg = "Task Successfully Removed!"
     private var issueProgressUpdateSuccessMsg = "Issue Progress Updated Successfully!"
     private var issueResolvedMsg = "Issue Resolved"
     private var dataChangeCancelMsg = "DatabaseError! Operation Cancelled"
@@ -37,6 +35,7 @@ class EditTask : AppCompatActivity() {
         setModeByPassIntent(passedTask)
         val taskEditSaveBtn = findViewById<Button>(R.id.task_edit_update_button)
         val taskEditCancelBtn = findViewById<Button>(R.id.task_edit_cancel_button)
+        val taskRemoveImageViewButton = findViewById<ImageView>(R.id.task_edit_remove_button)
         taskEditCancelBtn.setOnClickListener {
             finish()
         }
@@ -48,6 +47,15 @@ class EditTask : AppCompatActivity() {
             task = it
             taskDetailView.setText(it.name)
             taskCompleteCheckBox.isChecked = it.completed
+        }
+
+        taskRemoveImageViewButton.setOnClickListener{
+            task?.let{
+                val dr = taskRef.child(it.taskId)
+                dr.removeValue();
+            }
+            finish()
+            Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT).show()
         }
 
         taskEditSaveBtn.setOnClickListener {
@@ -113,6 +121,10 @@ class EditTask : AppCompatActivity() {
 
             finish()
         }
+    }
+
+    private fun refreshIssueStatus(issueId: String){
+
     }
 
     private fun getTaskUpdateListener(): ValueEventListener {

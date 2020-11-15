@@ -152,5 +152,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/issue_edit_add_new_task_button" />
 
+    <ImageView
+        android:id="@+id/issue_edit_remove_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:contentDescription="@string/issue_edit_remove_button_desc_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_update_button"
+        app:srcCompat="@drawable/ic_baseline_delete_forever_24" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,6 +15,7 @@ class EditIssue : AppCompatActivity() {
     private var issueUpdateFailureMsg = "Database Error! Issue Updated Failed!"
     private var issueRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("issues")
     private var issueUpdateListener: ValueEventListener? = null
+    private var removedMsg = "Issue Successfully Removed!"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,6 +23,7 @@ class EditIssue : AppCompatActivity() {
 
         var addNewTaskButton = findViewById<Button>(R.id.issue_edit_add_new_task_button)
         var updateIssueButton = findViewById<Button>(R.id.issue_edit_update_button)
+        var removeIssueImageViewButton = findViewById<ImageView>(R.id.issue_edit_remove_button)
         issue = intent.getParcelableExtra<Issue>("issue")
         issueId = intent.getStringExtra("issueId")
         issueUpdateListener = getIssueUpdateListener()
@@ -55,6 +57,14 @@ class EditIssue : AppCompatActivity() {
             val intent = Intent(this, EditTask::class.java)
             intent.putExtra("issueId", issueId)
             startActivityForResult(intent, 1)
+        }
+
+        removeIssueImageViewButton.setOnClickListener{
+            issue?.let{
+                val dr = issueRef.child(it.issueId)
+                dr.removeValue();
+            }
+            finish()
         }
 
         updateIssueButton.setOnClickListener {
@@ -91,6 +101,11 @@ class EditIssue : AppCompatActivity() {
                         ).show()
                     }
             }
+            Toast.makeText(
+                applicationContext,
+                removedMsg,
+                Toast.LENGTH_SHORT
+            ).show()
             finish()
         }
     }
