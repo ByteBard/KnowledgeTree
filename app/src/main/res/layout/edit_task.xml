@@ -19,7 +19,7 @@
 
     <EditText
         tools:ignore="LabelFor"
-        android:id="@+id/task_edit_detail"
+        android:id="@+id/task_edit_detail_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -57,7 +57,7 @@
         android:text="@string/task_edit_complete_checkbox_text"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/task_edit_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/task_edit_detail_input_text" />
 
     <Button
         android:id="@+id/task_edit_cancel_button"

@@ -3,7 +3,6 @@ package com.example.knowledgetree
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcelable
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
@@ -26,6 +25,7 @@ class EditTask : AppCompatActivity() {
     private var issueRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("issues")
     private var taskUpdateListener: ValueEventListener? = null
     private var updatedProgress: Int = 0
+    private var isValid = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class EditTask : AppCompatActivity() {
             finish()
         }
         setButtonTextByMode(taskEditSaveBtn)
-        val taskDetailView = findViewById<EditText>(R.id.task_edit_detail)
+        val taskDetailView = findViewById<EditText>(R.id.task_edit_detail_input_text)
         val taskCompleteCheckBox = findViewById<CheckBox>(R.id.taskCompleteCheckBox)
         taskUpdateListener = getTaskUpdateListener()
         passedTask?.let { it ->
@@ -60,61 +60,77 @@ class EditTask : AppCompatActivity() {
         }
 
         taskEditSaveBtn.setOnClickListener {
-            val taskDetailView = findViewById<EditText>(R.id.task_edit_detail)
-            val taskCompleteCheckBox = findViewById<CheckBox>(R.id.taskCompleteCheckBox)
-            val taskDetail = taskDetailView.text.toString()
-            val taskComplete = taskCompleteCheckBox.isChecked
-            val currentTime: Date = Calendar.getInstance().time
+            validateInput()
+            if(isValid){
+                val taskDetailView = findViewById<EditText>(R.id.task_edit_detail_input_text)
+                val taskCompleteCheckBox = findViewById<CheckBox>(R.id.taskCompleteCheckBox)
+                val taskDetail = taskDetailView.text.toString()
+                val taskComplete = taskCompleteCheckBox.isChecked
+                val currentTime: Date = Calendar.getInstance().time
 
-            if (!issueId.isNullOrEmpty() && task == null && mode == Mode.Create) {
-                val newTaskId = taskRef.push().key.toString()
-                val newTask = Task(
-                    newTaskId,
-                    issueId.toString(),
-                    taskDetail,
-                    taskComplete,
-                    currentTime,
-                    currentTime
-                )
-
-                taskRef.child(newTaskId).setValue(newTask)
-                    .addOnSuccessListener {
-                        Toast.makeText(applicationContext, successfulCreatedToastMsg, Toast.LENGTH_SHORT).show()
-                        refreshIssueStatus(issueId.toString())
-                        val intent = Intent(this, EditIssue::class.java)
-                        intent.putExtra("issueId", issueId.toString())
-                        startActivityForResult(intent, 1)
-                    }
-                    .addOnFailureListener {
-                        Toast.makeText(applicationContext, failCreateToastMsg, Toast.LENGTH_SHORT).show()
-                    }
-            } else if (task != null && mode == Mode.Edit) {
-                task?.let { it ->
-                    val updatedTask = Task(
-                        it.taskId,
-                        it.issueId,
+                if (!issueId.isNullOrEmpty() && task == null && mode == Mode.Create) {
+                    val newTaskId = taskRef.push().key.toString()
+                    val newTask = Task(
+                        newTaskId,
+                        issueId.toString(),
                         taskDetail,
                         taskComplete,
-                        it.createdTimestamp,
+                        currentTime,
                         currentTime
                     )
-                    taskRef.child(it.taskId).setValue(updatedTask)
+
+                    taskRef.child(newTaskId).setValue(newTask)
                         .addOnSuccessListener {
+                            Toast.makeText(applicationContext, successfulCreatedToastMsg, Toast.LENGTH_SHORT).show()
                             refreshIssueStatus(issueId.toString())
+                            val intent = Intent(this, EditIssue::class.java)
+                            intent.putExtra("issueId", issueId.toString())
+                            startActivityForResult(intent, 1)
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                applicationContext,
-                                failUpdateToastMsg,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(applicationContext, failCreateToastMsg, Toast.LENGTH_SHORT).show()
                         }
+                } else if (task != null && mode == Mode.Edit) {
+                    task?.let { it ->
+                        val updatedTask = Task(
+                            it.taskId,
+                            it.issueId,
+                            taskDetail,
+                            taskComplete,
+                            it.createdTimestamp,
+                            currentTime
+                        )
+                        taskRef.child(it.taskId).setValue(updatedTask)
+                            .addOnSuccessListener {
+                                refreshIssueStatus(issueId.toString())
+                            }
+                            .addOnFailureListener {
+                                Toast.makeText(
+                                    applicationContext,
+                                    failUpdateToastMsg,
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                    }
+                } else {
+                    Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT).show()
                 }
-            } else {
-                Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT).show()
+                finish()
             }
+        }
+    }
 
-            finish()
+    private fun validateInput(){
+        val titleEditView = findViewById<EditText>(R.id.task_edit_detail_input_text)
+        when {
+            titleEditView.text.isNullOrEmpty() -> {
+                titleEditView.error = "Detail can not be empty!"
+                titleEditView.requestFocus()
+                isValid = false
+            }
+            else -> {
+                isValid = true
+            }
         }
     }
 
