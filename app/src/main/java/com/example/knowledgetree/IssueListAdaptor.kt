@@ -31,7 +31,7 @@ class IssueListAdaptor(
         val issueListTitle = v.findViewById<TextView>(R.id.issueListTitle)
         val issueListType = v.findViewById<TextView>(R.id.issueListType)
         val issueListProgress = v.findViewById<ProgressBar>(R.id.issueProgress)
-        val issueListStatus = v.findViewById<ImageView>(R.id.completeCheck)
+        val issueListStatus = v.findViewById<ImageView>(R.id.issue_create_complete_checkbox)
 
         fun bind(issue: Issue) {
             issueListTitle.text = issue.title

@@ -2,12 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
+    android:id="@+id/issue_edit_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/editTitleLabel"
+        android:id="@+id/issue_create_title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/issueTitleEditIuput"
+        android:id="@+id/issue_create_title_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -31,10 +31,10 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTitleLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_title_text" />
 
     <TextView
-        android:id="@+id/editDetailLabel"
+        android:id="@+id/issue_create_detail_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -42,10 +42,10 @@
         android:text="@string/detail"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issueTitleEditIuput" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_title_input_text" />
 
     <EditText
-        android:id="@+id/issueDetailEditInput"
+        android:id="@+id/issue_create_detail_input_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -58,34 +58,39 @@
         android:lines="3"
         android:maxLines="10"
         android:minLines="3"
+        android:textSize="18sp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDetailLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_detail_text" />
 
     <TextView
-        android:id="@+id/editTypeLabel"
+        android:id="@+id/issue_create_type_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="@string/type"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issueDetailEditInput" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_detail_input_text" />
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/issueTypeEditInput"
+    <EditText
+        android:id="@+id/issue_create_type_input_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:ems="10"
         android:hint="@string/typeEditHint"
+        android:inputType="text"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTypeLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_type_text"
+        android:importantForAutofill="no" />
 
     <CheckBox
-        android:id="@+id/completeCheck"
+        android:id="@+id/issue_create_complete_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -93,10 +98,10 @@
         android:text="@string/completed"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/issueTypeEditInput" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_type_input_text" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/issue_edit_progress_bar"
 
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="wrap_content"
@@ -108,30 +113,44 @@
         android:scaleX="6"
         android:scaleY="8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/completeCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/issue_create_complete_checkbox" />
 
     <Button
-        android:id="@+id/btn_create_issue"
+        android:id="@+id/issue_edit_update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/issue_edit_save_btn"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/issue_edit_update_button_text"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        android:backgroundTint="@android:color/holo_blue_bright"
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_add_new_task_button" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/issue_edit_add_new_task_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_orange_light"
         android:text="@string/issue_edit_add_task_btn"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_progress_bar" />
+
+    <Button
+        android:id="@+id/issue_edit_cancel_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:text="@string/issue_edit_cancel_button_text"
+        android:textSize="24sp"
+        android:backgroundTint="@android:color/holo_red_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/issue_edit_add_new_task_button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

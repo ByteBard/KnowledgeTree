@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.*
 
 class TaskListActivity : AppCompatActivity() {
@@ -25,6 +26,27 @@ class TaskListActivity : AppCompatActivity() {
         taskListView.layoutManager = LinearLayoutManager(this)
         valueEventListenerForTaskList = getValueEventListenerForTaskList()
         getTaskListView()
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.selectedItemId = R.id.navigation_task
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_issues -> {
+                    val intent = Intent(this, IssueListActivity::class.java)
+                    intent.putExtra("IssueListActivity", "IssueListActivity")
+                    startActivityForResult(intent, 1)
+                }
+                R.id.navigation_home -> {
+                    val intent = Intent(this, MainActivity::class.java)
+                    intent.putExtra("MainActivity", "MainActivity")
+                    startActivityForResult(intent, 1)
+                }
+                R.id.navigation_task -> {
+                    true
+                }
+            }
+            true
+        }
     }
 
     private fun getValueEventListenerForTaskList(): ValueEventListener {
@@ -46,9 +68,14 @@ class TaskListActivity : AppCompatActivity() {
     }
 
     private fun getTaskListView(){
-        issueId?.let {issueId ->
-            val queryRef: Query = taskRef.orderByChild("issueId").equalTo(issueId)
+        if(issueId.isNullOrEmpty()){
+            val queryRef: Query = taskRef.orderByChild("issueId")
             queryRef.addValueEventListener(valueEventListenerForTaskList as ValueEventListener)
+        }else{
+            issueId?.let {issueId ->
+                val queryRef: Query = taskRef.orderByChild("issueId").equalTo(issueId)
+                queryRef.addValueEventListener(valueEventListenerForTaskList as ValueEventListener)
+            }
         }
     }
 

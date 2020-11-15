@@ -31,6 +31,7 @@
 
     <TextView
         android:id="@+id/overall_home_issue_total_label"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_title"
@@ -42,6 +43,7 @@
 
     <TextView
         android:id="@+id/overall_home_issue_resolved_label"
+        android:textColor="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_title"
@@ -52,6 +54,7 @@
 
     <TextView
         android:id="@+id/overall_home_issue_unresolved_label"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_title"
@@ -63,17 +66,19 @@
 
     <TextView
         android:id="@+id/overall_home_issue_total_number"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_total_label"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="55dp"
         android:layout_marginTop="10dp"
         android:text="@string/overall_home_issue_label_total_number"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/overall_home_issue_resolved_number"
+        android:textColor="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_resolved_label"
@@ -84,6 +89,7 @@
 
     <TextView
         android:id="@+id/overall_home_issue_unresolved_number"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_unresolved_label"
@@ -109,6 +115,7 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_progress_value"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_issue_progressBar"
@@ -129,6 +136,7 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_total"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_title"
@@ -140,17 +148,19 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_total_number"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_label_total"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="@string/overall_home_task_label_total_number"
         android:textSize="24sp" />
 
     <TextView
         android:id="@+id/overall_home_task_label_complete"
+        android:textColor="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_title"
@@ -161,6 +171,7 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_complete_number"
+        android:textColor="@android:color/holo_green_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_label_complete"
@@ -171,6 +182,7 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_incomplete"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_title"
@@ -182,12 +194,13 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_incomplete_number"
+        android:textColor="@android:color/holo_red_dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_label_incomplete"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/overall_home_task_label_incomplete_number"
         android:textSize="24sp" />
 
@@ -208,6 +221,7 @@
 
     <TextView
         android:id="@+id/overall_home_task_label_progress"
+        android:textColor="@android:color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/overall_home_task_progressBar"

@@ -29,10 +29,11 @@
 
 
     <string name="issue_edit_save_btn">Save</string>
-    <string name="issue_edit_add_task_btn">Add Task</string>
+    <string name="issue_edit_add_task_btn">Add New Task</string>
 
     <string name="task_edit_title">Task Detail</string>
-    <string name="task_edit_save_button_text">Save</string>
+    <string name="task_edit_update_button_text">Update</string>
+    <string name="task_edit_cancel_button_text">Cancel</string>
     <string name="task_edit_complete_checkbox_text">Completed</string>
     <string name="task_list_drag_Indicator_content_description">Please Drag this item to delete it</string>
 
@@ -49,21 +50,27 @@
 
     <string name="overall_home_issue_title">Issue Progress</string>
     <string name="overall_home_issue_label_total">Total</string>
-    <string name="overall_home_issue_label_total_number">100</string>
+    <string name="overall_home_issue_label_total_number"></string>
     <string name="overall_home_issue_label_resolved">Resolved</string>
-    <string name="overall_home_issue_label_resolved_number">50</string>
+    <string name="overall_home_issue_label_resolved_number"></string>
     <string name="overall_home_issue_label_unresolved">Pending</string>
-    <string name="overall_home_issue_label_unresolved_number">50</string>
-    <string name="overall_home_issue_label_progress">50%</string>
+    <string name="overall_home_issue_label_unresolved_number"></string>
+    <string name="overall_home_issue_label_progress"></string>
 
     <string name="overall_home_task_title">Task Progress</string>
     <string name="overall_home_task_label_total">Total</string>
-    <string name="overall_home_task_label_total_number">500</string>
+    <string name="overall_home_task_label_total_number"></string>
     <string name="overall_home_task_label_complete">Complete</string>
-    <string name="overall_home_task_label_complete_number">250</string>
+    <string name="overall_home_task_label_complete_number"></string>
     <string name="overall_home_task_label_incomplete">Pending</string>
-    <string name="overall_home_task_label_incomplete_number">250</string>
-    <string name="overall_home_task_label_progress">50%</string>
+    <string name="overall_home_task_label_incomplete_number"></string>
+    <string name="overall_home_task_label_progress"></string>
+
+    <string name="issue_create_cancel_button_text">Cancel</string>
+
+    <string name="issue_edit_cancel_button_text">Cancel</string>
+    <string name="issue_edit_update_button_text">Update</string>
+
 
 
 

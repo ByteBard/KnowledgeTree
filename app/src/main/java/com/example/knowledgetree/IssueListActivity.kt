@@ -1,5 +1,4 @@
 package com.example.knowledgetree
-
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +6,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.database.*
 
 class IssueListActivity : AppCompatActivity() {
@@ -52,15 +52,25 @@ class IssueListActivity : AppCompatActivity() {
                     intent.putExtra("MainActivity", "MainActivity")
                     startActivityForResult(intent, 1)
                 }
-//                R.id.action_music -> {
-//                }
+                R.id.navigation_task -> {
+                    val intent = Intent(this, TaskListActivity::class.java)
+                    intent.putExtra("TaskListActivity", "TaskListActivity")
+                    startActivityForResult(intent, 1)
+                }
             }
             true
         }
 
+        val addNewIssueBtn = findViewById<FloatingActionButton>(R.id.create_new_issue_fab)
+        addNewIssueBtn.setOnClickListener {
+            val intent = Intent(this, AddNewIssue::class.java)
+            intent.putExtra("Add", "Add")
+            startActivityForResult(intent, 1)
+        }
+
     }
 
-    fun showDetail(issue: Issue) {
+    private fun showDetail(issue: Issue) {
         val intent = Intent(this, EditIssue::class.java)
         intent.putExtra("issue", issue)
         startActivityForResult(intent, 1)

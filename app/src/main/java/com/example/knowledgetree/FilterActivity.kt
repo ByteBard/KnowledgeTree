@@ -12,13 +12,16 @@ class FilterActivity : AppCompatActivity() {
         setContentView(R.layout.advanced_filtering)
 
         val addNewIssueBtn = findViewById<FloatingActionButton>(R.id.add_new_issue_fab)
-        val applyAndFindBtn = findViewById<Button>(R.id.apply_find_btn)
-
         addNewIssueBtn.setOnClickListener {
             val intent = Intent(this, AddNewIssue::class.java)
             intent.putExtra("Add", "Add")
             startActivityForResult(intent, 1)
         }
+
+
+        val applyAndFindBtn = findViewById<Button>(R.id.apply_find_btn)
+
+
 
         applyAndFindBtn.setOnClickListener {
             val intent = Intent(this, IssueListActivity::class.java)

@@ -5,14 +5,17 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/editTitleLabel"
+        android:id="@+id/issue_create_title_text"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/issueTitleEditIuput"
+        android:id="@+id/issue_create_title_input_text"
+        android:layout_marginHorizontal="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -22,14 +25,17 @@
         android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/editDetailLabel"
+        android:id="@+id/issue_create_detail_text"
+        android:layout_marginHorizontal="32dp"
         android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
         android:layout_height="wrap_content"
         android:text="@string/detail"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/issueDetailEditInput"
+        android:id="@+id/issue_create_detail_input_text"
+        android:layout_marginHorizontal="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
@@ -38,31 +44,58 @@
         android:inputType="textNoSuggestions" />
 
     <TextView
-        android:id="@+id/editTypeLabel"
+        android:id="@+id/issue_create_type_text"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="24dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/type"
         android:textSize="18sp" />
 
     <MultiAutoCompleteTextView
-        android:id="@+id/issueTypeEditInput"
+        android:id="@+id/issue_create_type_input_text"
+        android:layout_marginHorizontal="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/typeEditHint" />
 
     <CheckBox
-        android:id="@+id/completeCheck"
+        android:id="@+id/issue_create_complete_checkbox"
+        android:layout_marginHorizontal="32dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/completed"
         android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/btn_create_issue"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/create_new_issue_buttons_layout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/create"
-        android:textSize="24sp" />
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/issue_create_create_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@android:color/holo_blue_bright"
+            android:text="@string/create"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/issue_create_cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/issue_create_cancel_button_text"
+            android:textSize="24sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
 </android.widget.LinearLayout>

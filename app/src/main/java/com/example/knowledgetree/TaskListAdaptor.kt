@@ -28,7 +28,7 @@ class TaskListAdaptor(
 
     inner class ViewHolder(val v: View) : RecyclerView.ViewHolder(v) {
         val taskName = v.findViewById<TextView>(R.id.task_name)
-        val taskComplete = v.findViewById<ImageView>(R.id.taskCompleteCheck)
+        val taskComplete = v.findViewById<ImageView>(R.id.task_item_complete_checkbox)
 
         fun bind(task: Task) {
             taskName.text = task.name

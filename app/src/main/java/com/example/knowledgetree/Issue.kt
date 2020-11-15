@@ -1,8 +1,6 @@
 package com.example.knowledgetree
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
-
-
 import java.util.*
 
 @Parcelize

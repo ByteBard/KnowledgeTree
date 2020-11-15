@@ -19,7 +19,7 @@
             android:padding="2dp">
 
             <ImageView
-                android:id="@+id/taskCompleteCheck"
+                android:id="@+id/task_item_complete_checkbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -41,7 +41,7 @@
                 android:maxLines="4"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/taskCompleteCheck"
+                app:layout_constraintEnd_toStartOf="@+id/task_item_complete_checkbox"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
