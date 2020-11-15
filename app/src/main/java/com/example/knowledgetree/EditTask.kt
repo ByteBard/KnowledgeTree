@@ -52,7 +52,8 @@ class EditTask : AppCompatActivity() {
         taskRemoveImageViewButton.setOnClickListener{
             task?.let{
                 val dr = taskRef.child(it.taskId)
-                dr.removeValue();
+                dr.removeValue()
+                refreshIssueStatus(it.issueId)
             }
             finish()
             Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT).show()
@@ -79,6 +80,7 @@ class EditTask : AppCompatActivity() {
                 taskRef.child(newTaskId).setValue(newTask)
                     .addOnSuccessListener {
                         Toast.makeText(applicationContext, successfulCreatedToastMsg, Toast.LENGTH_SHORT).show()
+                        refreshIssueStatus(issueId.toString())
                         val intent = Intent(this, EditIssue::class.java)
                         intent.putExtra("issueId", issueId.toString())
                         startActivityForResult(intent, 1)
@@ -98,14 +100,7 @@ class EditTask : AppCompatActivity() {
                     )
                     taskRef.child(it.taskId).setValue(updatedTask)
                         .addOnSuccessListener {
-                            val queryRef: Query =
-                                taskRef.orderByChild("issueId").equalTo(task!!.issueId)
-                            queryRef.addValueEventListener(taskUpdateListener as ValueEventListener)
-                            Toast.makeText(
-                                applicationContext,
-                                successfulUpdateToastMsg,
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            refreshIssueStatus(issueId.toString())
                         }
                         .addOnFailureListener {
                             Toast.makeText(
@@ -123,8 +118,22 @@ class EditTask : AppCompatActivity() {
         }
     }
 
-    private fun refreshIssueStatus(issueId: String){
+    private fun refreshIssueStatus(passedIssueId: String) {
+        if(task?.issueId.isNullOrEmpty()){
+            val queryRef: Query =
+                taskRef.orderByChild("issueId").equalTo(passedIssueId)
+            queryRef.addValueEventListener(taskUpdateListener as ValueEventListener)
+        }else{
+            val queryRef: Query =
+                taskRef.orderByChild("issueId").equalTo(task!!.issueId)
+            queryRef.addValueEventListener(taskUpdateListener as ValueEventListener)
+        }
 
+        Toast.makeText(
+            applicationContext,
+            successfulUpdateToastMsg,
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun getTaskUpdateListener(): ValueEventListener {
