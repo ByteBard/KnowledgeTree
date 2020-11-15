@@ -79,7 +79,7 @@
                 android:id="@+id/issue_list_view_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/issue_list_visited_time"
                 android:textColor="@android:color/holo_purple"

@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import java.text.DateFormat
+import java.util.*
 
 class IssueListAdaptor(
     private val issueList: List<Issue>,
@@ -33,12 +35,17 @@ class IssueListAdaptor(
         val issueListProgress = v.findViewById<ProgressBar>(R.id.issueProgress)
         val issueListProgressValue = v.findViewById<TextView>(R.id.issue_list_progress_blob)
         val issueListStatus = v.findViewById<ImageView>(R.id.issue_create_complete_checkbox)
+        val issueListVisitedDate = v.findViewById<TextView>(R.id.issue_list_view_date)
 
         fun bind(issue: Issue) {
+
+            val df: DateFormat = DateFormat.getDateInstance(DateFormat.FULL, Locale.ENGLISH)
+            val date = df.format(issue.lastAccessTimestamp)
             issueListTitle.text = issue.title
             issueListType.text = issue.type
             issueListProgress.progress = issue.progress
             issueListProgressValue.text = "${issue.progress}%"
+            issueListVisitedDate.text = "Last Visited at: $date"
             if(issue.completed){
                 issueListStatus.setImageResource(R.drawable.ic_baseline_check_circle_24)
             }else{
