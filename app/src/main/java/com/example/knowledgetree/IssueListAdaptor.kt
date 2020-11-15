@@ -31,12 +31,14 @@ class IssueListAdaptor(
         val issueListTitle = v.findViewById<TextView>(R.id.issueListTitle)
         val issueListType = v.findViewById<TextView>(R.id.issueListType)
         val issueListProgress = v.findViewById<ProgressBar>(R.id.issueProgress)
+        val issueListProgressValue = v.findViewById<TextView>(R.id.issue_list_progress_blob)
         val issueListStatus = v.findViewById<ImageView>(R.id.issue_create_complete_checkbox)
 
         fun bind(issue: Issue) {
             issueListTitle.text = issue.title
             issueListType.text = issue.type
             issueListProgress.progress = issue.progress
+            issueListProgressValue.text = "${issue.progress}%"
             if(issue.completed){
                 issueListStatus.setImageResource(R.drawable.ic_baseline_check_circle_24)
             }else{
