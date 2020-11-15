@@ -19,6 +19,7 @@
 
             <TextView
                 android:id="@+id/issueListTitle"
+                android:textColor="@color/colorPrimaryDark"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -33,6 +34,7 @@
 
             <TextView
                 android:id="@+id/issueListType"
+                android:textColor="@android:color/holo_red_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -74,18 +76,20 @@
                 app:layout_constraintVertical_bias="0.466" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/issue_list_view_date"
+                android:textColor="@android:color/holo_purple"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"
                 android:text="@string/issue_list_visited_time"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/issue_create_complete_checkbox" />
 
             <TextView
                 android:id="@+id/issue_list_progress_blob"
+                android:textColor="@android:color/holo_green_dark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

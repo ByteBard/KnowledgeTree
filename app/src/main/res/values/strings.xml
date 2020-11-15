@@ -41,7 +41,7 @@
     <string name="issue_list_created_time">Created: 3 Jun 2008 11:05:30</string>
     <string name="issue_list_visited_time">Visited: 3 Jun 2008 11:05:30</string>
     <string name="issue_list_progress_blob">100%</string>
-    <string name="issue_list_progress_task_count">999 Tasks</string>
+    <string name="issue_list_progress_task_count"></string>
 
     <string name="navigation_button_home">Home</string>
     <string name="navigation_button_issue">Issue</string>
@@ -50,21 +50,21 @@
 
     <string name="overall_home_issue_title">Issue Progress</string>
     <string name="overall_home_issue_label_total">Total</string>
-    <string name="overall_home_issue_label_total_number"></string>
+    <string name="overall_home_issue_label_total_number">0</string>
     <string name="overall_home_issue_label_resolved">Resolved</string>
-    <string name="overall_home_issue_label_resolved_number"></string>
+    <string name="overall_home_issue_label_resolved_number">0</string>
     <string name="overall_home_issue_label_unresolved">Pending</string>
-    <string name="overall_home_issue_label_unresolved_number"></string>
-    <string name="overall_home_issue_label_progress"></string>
+    <string name="overall_home_issue_label_unresolved_number">0</string>
+    <string name="overall_home_issue_label_progress">0</string>
 
     <string name="overall_home_task_title">Task Progress</string>
     <string name="overall_home_task_label_total">Total</string>
-    <string name="overall_home_task_label_total_number"></string>
+    <string name="overall_home_task_label_total_number">0</string>
     <string name="overall_home_task_label_complete">Complete</string>
-    <string name="overall_home_task_label_complete_number"></string>
+    <string name="overall_home_task_label_complete_number">0</string>
     <string name="overall_home_task_label_incomplete">Pending</string>
-    <string name="overall_home_task_label_incomplete_number"></string>
-    <string name="overall_home_task_label_progress"></string>
+    <string name="overall_home_task_label_incomplete_number">0</string>
+    <string name="overall_home_task_label_progress">0</string>
 
     <string name="issue_create_cancel_button_text">Cancel</string>
 
