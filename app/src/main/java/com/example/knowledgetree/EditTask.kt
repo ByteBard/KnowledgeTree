@@ -110,6 +110,8 @@ class EditTask : AppCompatActivity() {
             } else {
                 Toast.makeText(applicationContext, errorMsg, Toast.LENGTH_SHORT).show()
             }
+
+            finish()
         }
     }
 

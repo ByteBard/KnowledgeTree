@@ -37,9 +37,7 @@ class TaskListAdaptor(
             }else{
                 taskComplete.setImageResource(R.drawable.task_unchecked)
             }
-
             v.setOnClickListener { listener(task) }
-
         }
     }
 }

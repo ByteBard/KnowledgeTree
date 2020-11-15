@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.database.*
+import java.util.*
 
 class EditIssue : AppCompatActivity() {
     private var issueId: String? = null
+    private var issue: Issue? = null
     private var issueUpdatedMsg = "Issue Successfully Updated!"
     private var issueUpdateFailureMsg = "Database Error! Issue Updated Failed!"
     private var issueRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("issues")
@@ -19,7 +21,8 @@ class EditIssue : AppCompatActivity() {
         setContentView(R.layout.edit_issue)
 
         var addNewTaskButton = findViewById<Button>(R.id.issue_edit_add_new_task_button)
-        val issue = intent.getParcelableExtra<Issue>("issue")
+        var updateIssueButton = findViewById<Button>(R.id.issue_edit_update_button)
+        issue = intent.getParcelableExtra<Issue>("issue")
         issueId = intent.getStringExtra("issueId")
         issueUpdateListener = getIssueUpdateListener()
         val progressBar = findViewById<ProgressBar>(R.id.issue_edit_progress_bar)
@@ -28,8 +31,8 @@ class EditIssue : AppCompatActivity() {
         val detail = findViewById<EditText>(R.id.issue_create_detail_input_text)
         val complete = findViewById<CheckBox>(R.id.issue_create_complete_checkbox)
 
-        if(issueId.isNullOrEmpty()){
-            issue?.let{
+        if (issueId.isNullOrEmpty()) {
+            issue?.let {
                 issueId = it.issueId
                 title.setText(it.title)
                 type.setText(it.type)
@@ -37,7 +40,7 @@ class EditIssue : AppCompatActivity() {
                 complete.isChecked = it.completed
                 progressBar.setProgress(it.progress, true)
             }
-        }else{
+        } else {
             issueRef.orderByChild("issueId").equalTo(issueId)
             issueRef.addValueEventListener(issueUpdateListener as ValueEventListener)
         }
@@ -48,10 +51,47 @@ class EditIssue : AppCompatActivity() {
             startActivityForResult(intent, 1)
         }
 
-        addNewTaskButton.setOnClickListener{
+        addNewTaskButton.setOnClickListener {
             val intent = Intent(this, EditTask::class.java)
             intent.putExtra("issueId", issueId)
             startActivityForResult(intent, 1)
+        }
+
+        updateIssueButton.setOnClickListener {
+            val title = findViewById<EditText>(R.id.issue_create_title_input_text).text.toString()
+            val type = findViewById<EditText>(R.id.issue_create_type_input_text).text.toString()
+            val detail = findViewById<EditText>(R.id.issue_create_detail_input_text).text.toString()
+            val complete = findViewById<CheckBox>(R.id.issue_create_complete_checkbox).isChecked
+            val currentTime: Date = Calendar.getInstance().time
+            issue?.let {
+                val updatedIssue = Issue(
+                    it.issueId,
+                    title,
+                    detail,
+                    type,
+                    it.progress,
+                    complete,
+                    it.createdTimestamp,
+                    currentTime
+                )
+
+                issueRef.child(it.issueId).setValue(updatedIssue)
+                    .addOnSuccessListener {
+                        Toast.makeText(
+                            applicationContext,
+                            issueUpdatedMsg,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(
+                            applicationContext,
+                            issueUpdateFailureMsg,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            }
+            finish()
         }
     }
 
@@ -95,10 +135,6 @@ class EditIssue : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        val checkBox = findViewById<CheckBox>(R.id.issue_create_complete_checkbox)
-        val progressBar = findViewById<ProgressBar>(R.id.issue_edit_progress_bar)
-        //checkBox.isChecked = true
-        //progressBar.progress = 100
         if (resultCode != Activity.RESULT_OK) return
     }
 }
